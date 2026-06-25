@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27.06.2026 • 20:00</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        body { font-family: 'Inter', system-ui, sans-serif; }
+        .title-font { font-family: 'Space Grotesk', sans-serif; }
+
+        .glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); }
+        .countdown-number { 
+            font-size: 3.5rem; 
+            line-height: 1; 
+            font-weight: 700; 
+            font-family: 'Space Grotesk', sans-serif; 
+            background: linear-gradient(90deg, #60a5fa, #a78bfa); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
+        @media (min-width: 640px) {
+            .countdown-number { font-size: 5.5rem; }
+        }
+
+        .envelope {
+            width: 240px;
+            height: 170px;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 8px 8px 40px 8px;
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+        }
+        @media (min-width: 640px) {
+            .envelope { width: 280px; height: 200px; }
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-white min-h-screen overflow-hidden relative">
+
+    <!-- Debug button -->
+    <div id="debug-btn" class="hidden fixed top-4 right-4 z-50">
+        <button onclick="showBirthdayPage()" 
+                class="bg-white/10 hover:bg-white/20 border border-white/30 px-4 py-2 rounded-xl text-sm backdrop-blur-md">
+            👀 Pokaż życzenia
+        </button>
+    </div>
+
+    <!-- COUNTDOWN PAGE -->
+    <div id="countdown-page" class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full text-center">
+            <div class="mb-6">
+                <div class="inline-flex items-center gap-2 bg-white/5 text-xs sm:text-sm px-4 py-2 rounded-full border border-white/10">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    NADCHODZĄCE WYDARZENIE
+                </div>
+            </div>
+            
+            <h1 class="title-font text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tighter mb-3">27 czerwca 2026</h1>
+            <p class="text-2xl sm:text-3xl text-zinc-400 mb-10">godzina 20:00</p>
+
+            <div class="glass rounded-3xl p-8 sm:p-12 border border-white/10">
+                <div class="grid grid-cols-4 gap-4 sm:gap-8" id="countdown">
+                    <div class="text-center">
+                        <div id="days" class="countdown-number">00</div>
+                        <p class="text-xs sm:text-sm tracking-widest uppercase text-zinc-500 mt-2">Dni</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="hours" class="countdown-number">00</div>
+                        <p class="text-xs sm:text-sm tracking-widest uppercase text-zinc-500 mt-2">Godzin</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="minutes" class="countdown-number">00</div>
+                        <p class="text-xs sm:text-sm tracking-widest uppercase text-zinc-500 mt-2">Minut</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="seconds" class="countdown-number">00</div>
+                        <p class="text-xs sm:text-sm tracking-widest uppercase text-zinc-500 mt-2">Sekund</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BIRTHDAY PAGE -->
+    <div id="birthday-page" class="hidden min-h-screen bg-gradient-to-br from-rose-950 via-zinc-950 to-purple-950 flex items-center justify-center p-4">
+        <div class="max-w-md w-full text-center">
+            <h1 class="title-font text-5xl sm:text-6xl font-bold mb-2">Wszystkiego Najlepszego!</h1>
+            <p class="text-xl sm:text-2xl text-rose-300 mb-10">27 czerwca 2026 🎂</p>
+
+            <div class="flex justify-center mb-10">
+                <div onclick="openEnvelope()" id="envelope" class="envelope flex items-center justify-center">
+                    <div class="text-6xl">💌</div>
+                </div>
+            </div>
+
+            <div id="envelope-message" class="hidden glass rounded-3xl p-8 mb-10 text-left">
+                <p class="text-lg leading-relaxed italic text-zinc-200">
+                    "Drogi Solenizancie,<br><br>
+                    W dniu Twoich urodzin życzę Ci oceanu szczęścia, spełnienia wszystkich marzeń i zdrowia na długie, piękne lata.<br><br>
+                    Sto lat w zdrowiu, radości i miłości! ❤️"
+                </p>
+            </div>
+
+            <div class="space-y-4 mb-10">
+                <div class="glass rounded-2xl p-6 text-left">
+                    <p class="text-rose-400 text-sm mb-2">Życzenie #1</p>
+                    <p class="text-zinc-200">Niech wszystkie Twoje plany realizują się szybciej niż się spodziewasz.</p>
+                </div>
+                <div class="glass rounded-2xl p-6 text-left">
+                    <p class="text-rose-400 text-sm mb-2">Życzenie #2</p>
+                    <p class="text-zinc-200">Niech każdy rok będzie lepszy od poprzedniego.</p>
+                </div>
+            </div>
+
+            <a href="https://open.spotify.com/track/TUTAJ_WKLEJ_LINK_DO_PIOSENKI" 
+               target="_blank"
+               class="inline-flex items-center gap-3 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 rounded-2xl w-full justify-center">
+                <span class="text-3xl">🎵</span>
+                Otwórz specjalną piosenkę
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const targetDate = new Date('2026-06-27T20:00:00+02:00').getTime();
+
+        function showBirthdayPage() {
+            document.getElementById('countdown-page').classList.add('hidden');
+            document.getElementById('birthday-page').classList.remove('hidden');
+        }
+
+        function updateCountdown() {
+            const distance = targetDate - Date.now();
+            if (distance < 0) {
+                showBirthdayPage();
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        function openEnvelope() {
+            document.getElementById('envelope-message').classList.toggle('hidden');
+        }
+
+        // Debug / test na telefonie
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('show') === 'birthday') {
+            showBirthdayPage();
+        }
+
+        setInterval(updateCountdown, 100);
+        updateCountdown();
+    </script>
+</body>
+</html>
