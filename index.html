@@ -178,8 +178,8 @@
                     max="100" 
                     value="70"
                     oninput="setVolume(this.value)"
-                    class="w-40 accent-amber-400 cursor-pointer">
-                <span class="text-sm text-zinc-400 w-8" id="volume-value">70%</span>
+                    class="w-48 accent-amber-400 cursor-pointer">
+                <span class="text-sm text-zinc-400 w-10" id="volume-value">70%</span>
             </div>
         </div>
     </div>
@@ -230,7 +230,7 @@
 
         let musicPlaying = false;
         const audio = document.getElementById('birthdayMusic');
-        audio.volume = 0.7; // domyślna głośność
+        audio.volume = 0.7;
 
         function showCountdownPage() {
             document.getElementById('countdown-page').classList.remove('hidden');
@@ -253,7 +253,7 @@
         function updateCountdown() {
             const distance = TARGET_DATE - Date.now();
 
-            if ((distance <= 60000 && distance > 0) || debugFinal) {
+            if (distance <= 60000 && distance > 0) {
                 document.body.classList.add("final-minute");
                 document.getElementById("final-message").classList.remove("hidden");
             } else {
@@ -341,7 +341,7 @@
             document.getElementById('debug-btn').classList.remove('hidden');
         }
 
-        // Gwiazdy i spadające gwiazdy
+        // Gwiazdy
         const stars = document.getElementById("stars");
         for(let i = 0; i < 80; i++) {
             const star = document.createElement("div");
