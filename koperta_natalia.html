@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dla Natalii 💌</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Inter:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{background:#fdf6f0;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;position:relative}
+
+.from-label{position:fixed;bottom:22px;right:22px;font-size:11px;color:#c9a98a;letter-spacing:.05em;font-style:italic;opacity:.7;z-index:10}
+
+.scene{position:relative;width:320px;height:220px;cursor:pointer;z-index:2}
+
+.envelope{position:absolute;inset:0;width:100%;height:100%}
+
+.env-body{position:absolute;inset:0;background:#f5e6d3;border-radius:4px;border:1px solid #ddc9b0;overflow:hidden}
+.env-body::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:#eedcc6;clip-path:polygon(0 100%,50% 0,100% 100%)}
+
+.env-flap{position:absolute;top:0;left:0;right:0;height:50%;background:#f0d9c0;transform-origin:top center;transform:rotateX(0deg);transition:transform .6s ease;transform-style:preserve-3d;z-index:4;clip-path:polygon(0 0,50% 100%,100% 0)}
+.env-flap.open{transform:rotateX(-160deg)}
+.env-left{position:absolute;top:0;left:0;bottom:0;width:50%;background:#ecdbc8;clip-path:polygon(0 0,100% 50%,0 100%)}
+.env-right{position:absolute;top:0;right:0;bottom:0;width:50%;background:#e8d5c0;clip-path:polygon(100% 0,0 50%,100% 100%)}
+
+.seal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;background:#c0392b;border-radius:50%;z-index:5;display:flex;align-items:center;justify-content:center;font-size:14px;transition:opacity .3s;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.seal.hidden{opacity:0;pointer-events:none}
+
+.card{position:absolute;left:16px;right:16px;bottom:10px;background:#fff;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.1);transform:translateY(0);transition:transform .7s cubic-bezier(.22,1,.36,1);z-index:3;overflow:hidden}
+.card.out{transform:translateY(-260px)}
+.card-inner{padding:22px 20px 18px}
+.card-top{text-align:center;margin-bottom:14px}
+.card-emoji{font-size:28px;display:block;margin-bottom:4px}
+.card-name{font-family:'Dancing Script',cursive;font-size:1.6rem;color:#8b4513;line-height:1.2}
+.card-text{font-size:13.5px;color:#555;line-height:1.75;margin-bottom:16px}
+.card-text em{color:#a0522d;font-style:italic}
+.divider{width:32px;height:1.5px;background:linear-gradient(90deg,#e8a87c,#d4849a);border-radius:2px;margin:0 auto 14px}
+
+.spotify-row{display:flex;align-items:center;gap:8px;background:#f9f9f9;border:1px solid #eee;border-radius:20px;padding:8px 14px;text-decoration:none;margin-bottom:6px}
+.spotify-row svg{flex-shrink:0}
+.spotify-row span{font-size:12.5px;color:#333;font-weight:500}
+
+.secret-btn{display:block;text-align:right;margin-top:2px}
+.secret-btn a{font-size:9px;color:#ddd;text-decoration:none;letter-spacing:.03em;transition:color .2s}
+.secret-btn a:hover{color:#aaa}
+
+.hint{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:11px;color:#c9a98a;white-space:nowrap;opacity:1;transition:opacity .4s}
+.hint.gone{opacity:0}
+
+.bg-circles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg-circles span{position:absolute;border-radius:50%;opacity:.06}
+</style>
+</head>
+<body>
+
+<div class="bg-circles">
+  <span style="width:300px;height:300px;background:#e8a87c;top:-80px;right:-60px"></span>
+  <span style="width:200px;height:200px;background:#d4849a;bottom:-50px;left:-40px"></span>
+  <span style="width:150px;height:150px;background:#8b4513;top:40%;left:20%"></span>
+</div>
+
+<div class="scene" id="scene" title="Kliknij, aby otworzyć">
+  <div class="envelope">
+    <div class="env-body"></div>
+    <div class="env-left"></div>
+    <div class="env-right"></div>
+
+    <div class="card" id="card">
+      <div class="card-inner">
+        <div class="card-top">
+          <span class="card-emoji">🎂</span>
+          <div class="card-name">Natalia „Nana"</div>
+        </div>
+        <div class="divider"></div>
+        <p class="card-text">
+          Kochana Nano,<br><br>
+          W Twój wyjątkowy dzień życzę Ci<br>
+          samych pięknych chwil, spełnienia marzeń<br>
+          i uśmiechu każdego dnia. 🌸<br><br>
+          Niech ten rok będzie dla Ciebie<br>
+          najwspanialszy ze wszystkich. ✨<br><br>
+          <em>Z całego serca — Tomasz 💛</em>
+        </p>
+        <a class="spotify-row" href="https://open.spotify.com/track/5DPtX89n73XGCbdvTCHdr0" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.622.622 0 01-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 01-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 01.207.857zm1.223-2.722a.78.78 0 01-1.072.257c-2.687-1.652-6.785-2.131-9.965-1.166a.78.78 0 01-.973-.519.781.781 0 01.52-.973c3.632-1.102 8.147-.568 11.233 1.329a.78.78 0 01.257 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71a.937.937 0 11-.543-1.793c3.525-1.07 9.386-.862 13.087 1.306a.937.937 0 01-.927 1.644z"/></svg>
+          <span>Posłuchaj piosenki 🎵</span>
+        </a>
+        <div class="secret-btn"><a href="#" id="secretLink">···</a></div>
+      </div>
+    </div>
+
+    <div class="env-flap" id="flap"></div>
+    <div class="seal" id="seal">💌</div>
+  </div>
+  <div class="hint" id="hint">dotknij, aby otworzyć</div>
+</div>
+
+<div class="from-label">od Tomasza dla Natalii</div>
+
+<script>
+const scene=document.getElementById('scene');
+const flap=document.getElementById('flap');
+const seal=document.getElementById('seal');
+const card=document.getElementById('card');
+const hint=document.getElementById('hint');
+const secretLink=document.getElementById('secretLink');
+let opened=false;
+
+scene.addEventListener('click',function(e){
+  if(e.target===secretLink||e.target.closest('a'))return;
+  if(opened)return;
+  opened=true;
+  hint.classList.add('gone');
+  seal.classList.add('hidden');
+  setTimeout(()=>{flap.classList.add('open')},100);
+  setTimeout(()=>{card.classList.add('out')},500);
+});
+
+secretLink.addEventListener('click',function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  const txt=prompt('Twoja ukryta wiadomość:','');
+  if(txt){
+    const p=document.createElement('p');
+    p.style.cssText='font-size:12px;color:#bbb;font-style:italic;text-align:center;margin-top:8px;padding-top:8px;border-top:1px solid #f0f0f0';
+    p.textContent=txt;
+    secretLink.parentElement.replaceWith(p);
+  }
+});
+</script>
+
+</body>
+</html>
