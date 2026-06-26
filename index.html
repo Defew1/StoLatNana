@@ -8,65 +8,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         @keyframes finalPulse {
-
-    0%,100%{
-        transform:scale(1);
-        filter:drop-shadow(0 0 10px rgba(96,165,250,.4));
-    }
-
-    50%{
-        transform:scale(1.06);
-        filter:drop-shadow(0 0 30px rgba(255,215,0,.8));
-    }
-
-}
-
-.final-minute .countdown-number{
-
-    animation:finalPulse .8s ease-in-out infinite;
-
-}
-
-.final-minute .glass{
-
-    box-shadow:
-        0 0 40px rgba(255,215,0,.15),
-        0 0 90px rgba(96,165,250,.2);
-
-}
+            0%,100%{ transform:scale(1); filter:drop-shadow(0 0 10px rgba(96,165,250,.4)); }
+            50%{ transform:scale(1.06); filter:drop-shadow(0 0 30px rgba(255,215,0,.8)); }
+        }
+        .final-minute .countdown-number{
+            animation:finalPulse .8s ease-in-out infinite;
+        }
+        .final-minute .glass{
+            box-shadow: 0 0 40px rgba(255,215,0,.15), 0 0 90px rgba(96,165,250,.2);
+        }
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
         
         body { font-family: 'Inter', system-ui, sans-serif; }
         .title-font { font-family: 'Space Grotesk', sans-serif; }
-
         .glass { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); }
-        .countdown-number { 
-            font-size:  clamp(2.5rem, 8vw, 5.5rem); 
-            line-height: 1; 
-            font-weight: 700; 
-            font-family: 'Space Grotesk', sans-serif; 
-            background: linear-gradient(90deg, #60a5fa, #a78bfa); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+        .countdown-number {
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            line-height: 1;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        @media (min-width: 640px) {
-            .countdown-number { font-size: 5.5rem; }
-        }
-
         .countdown-number{
-    animation: glow 3s ease-in-out infinite;
-}
-
-@keyframes glow{
-    0%,100%{
-        filter: drop-shadow(0 0 3px #60a5fa);
-    }
-    50%{
-        filter: drop-shadow(0 0 12px #a78bfa);
-    }
-}
-
+            animation: glow 3s ease-in-out infinite;
+        }
+        @keyframes glow{
+            0%,100%{ filter: drop-shadow(0 0 3px #60a5fa); }
+            50%{ filter: drop-shadow(0 0 12px #a78bfa); }
+        }
         .envelope {
             width: 240px;
             height: 170px;
@@ -76,79 +47,40 @@
         }
         @media (min-width: 640px) {
             .envelope { width: 280px; height: 200px; }
-
-            .glass {
-    animation: pulseBox 3s ease-in-out infinite;
-}
-
-@keyframes pulseBox {
-    0%,100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 rgba(96,165,250,0);
-    }
-
-    50% {
-        transform: scale(1.015);
-        box-shadow: 0 0 35px rgba(96,165,250,.2);
-    }
-}
-
         }
         #stars {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.star {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: white;
-    border-radius: 50%;
-    opacity: .2;
-    animation: twinkle 3s infinite ease-in-out;
-}
-
-@keyframes twinkle {
-
-    0%,100% {
-        opacity: .2;
-        transform: scale(1);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.8);
-    }
-
-}
-
-.shooting-star {
-    position: fixed;
-    width: 2px;
-    height: 120px;
-    background: linear-gradient(white, transparent);
-    transform: rotate(45deg);
-    animation: shoot 2s linear forwards;
-    z-index: 0;
-}
-
-@keyframes shoot {
-
-    from {
-        transform: translate(0,0) rotate(45deg);
-        opacity:1;
-    }
-
-    to {
-        transform: translate(-800px,800px) rotate(45deg);
-        opacity:0;
-    }
-
-}
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: .2;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%,100% { opacity: .2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.8); }
+        }
+        .shooting-star {
+            position: fixed;
+            width: 2px;
+            height: 120px;
+            background: linear-gradient(white, transparent);
+            transform: rotate(45deg);
+            animation: shoot 2s linear forwards;
+            z-index: 0;
+        }
+        @keyframes shoot {
+            from { transform: translate(0,0) rotate(45deg); opacity:1; }
+            to { transform: translate(-800px,800px) rotate(45deg); opacity:0; }
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-white min-h-screen overflow-hidden relative">
@@ -164,21 +96,19 @@
 
     <!-- COUNTDOWN PAGE -->
     <div id="countdown-page" class="min-h-screen flex items-center justify-center p-4">
-        <p id="final-message"
-   class="hidden mt-8 text-2xl text-amber-300 font-semibold animate-pulse">
-    ✨ Już za chwilę...
-</p>
+        <p id="final-message" class="hidden mt-8 text-2xl text-amber-300 font-semibold animate-pulse">
+            ✨ Już za chwilę...
+        </p>
         <div class="max-w-md w-full text-center">
             <div class="mb-6">
                 <div class="inline-flex items-center gap-2 bg-white/5 text-xs sm:text-sm px-4 py-2 rounded-full border border-white/10">
                     <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    Wyjądkowy dzień dla wyjątkowej osoby
+                    Wyjątkowy dzień dla wyjątkowej osoby
                 </div>
             </div>
             
             <h1 class="title-font text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tighter mb-3">27 czerwca 2026</h1>
             <p class="text-2xl sm:text-3xl text-zinc-400 mb-10">godzina 20:00</p>
-
             <div class="glass rounded-3xl p-8 sm:p-12 border border-white/10">
                 <div class="grid grid-cols-4 gap-4 sm:gap-8" id="countdown">
                     <div class="text-center">
@@ -202,18 +132,54 @@
         </div>
     </div>
 
+    <!-- MIDNIGHT PAGE (ETAP 2) -->
+    <div id="midnight-page" class="hidden min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full text-center">
+            <div class="text-8xl mb-8">🎉</div>
+            
+            <h1 class="title-font text-5xl sm:text-6xl font-semibold tracking-tighter mb-6">Witaj w dorosłości!</h1>
+            
+            <p class="text-2xl sm:text-3xl text-zinc-400 mb-10 leading-relaxed">
+                Oficjalnie masz już <span class="text-amber-300 font-bold">18 lat.</span><br><br>
+                Największa niespodzianka<br>otworzy się o <span class="text-amber-300 font-bold">20:00</span>.
+            </p>
+
+            <div class="glass rounded-3xl p-8 sm:p-12 border border-white/10 mb-10">
+                <div class="grid grid-cols-3 gap-6 sm:gap-8" id="midnight-countdown">
+                    <div class="text-center">
+                        <div id="mid-hours" class="countdown-number">00</div>
+                        <p class="text-xs sm:text-sm tracking-widest uppercase text-zinc-500 mt-2">Godzin</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="mid-minutes" class="countdown-number">00</div>
+                        <p class="text-xs sm:text-sm tracking-widest uppercase text-zinc-500 mt-2">Minut</p>
+                    </div>
+                    <div class="text-center">
+                        <div id="mid-seconds" class="countdown-number">00</div>
+                        <p class="text-xs sm:text-sm tracking-widest uppercase text-zinc-500 mt-2">Sekund</p>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="startMusic()" 
+                    id="music-btn"
+                    class="glass border border-white/10 hover:border-white/30 px-8 py-4 rounded-2xl text-lg flex items-center gap-3 mx-auto transition-all">
+                <span class="text-2xl">▶</span>
+                Rozpocznij muzykę
+            </button>
+        </div>
+    </div>
+
     <!-- BIRTHDAY PAGE -->
     <div id="birthday-page" class="hidden min-h-screen bg-gradient-to-br from-rose-950 via-zinc-950 to-purple-950 flex items-center justify-center p-4">
         <div class="max-w-md w-full text-center">
             <h1 class="title-font text-5xl sm:text-6xl font-bold mb-2">Wszystkiego Najlepszego!</h1>
             <p class="text-xl sm:text-2xl text-rose-300 mb-10">Nana 🎂</p>
-
             <div class="flex justify-center mb-10">
                 <div onclick="openEnvelope()" id="envelope" class="envelope flex items-center justify-center">
                     <div class="text-6xl">💌</div>
                 </div>
             </div>
-
             <div id="envelope-message" class="hidden glass rounded-3xl p-8 mb-10 text-left">
                 <p class="text-lg leading-relaxed italic text-zinc-200">
                     "Droga Natalio,<br><br>
@@ -221,7 +187,6 @@
                     Sto lat w zdrowiu, radości i miłości! ❤️"
                 </p>
             </div>
-
             <div class="space-y-4 mb-10">
                 <div class="glass rounded-2xl p-6 text-left">
                     <p class="text-rose-400 text-sm mb-2">Życzenie #1</p>
@@ -232,9 +197,7 @@
                     <p class="text-zinc-200">Niech każdy rok będzie lepszy od poprzedniego.</p>
                 </div>
             </div>
-
-            <a href="https://open.spotify.com/track/5DPtX89n73XGCbdvTCHdr0?si=db99d4abba9c4a18" 
-               target="_blank"
+            <a href="https://open.spotify.com/track/5DPtX89n73XGCbdvTCHdr0?si=db99d4abba9c4a18" target="_blank"
                class="inline-flex items-center gap-3 bg-[#1DB954] hover:bg-[#1ed760] text-black font-semibold text-base sm:text-lg px-8 sm:px-10 py-4 sm:py-5 rounded-2xl w-full justify-center">
                 <span class="text-3xl">🎵</span>
                 Otwórz specjalną piosenkę
@@ -242,32 +205,46 @@
         </div>
     </div>
 
+    <audio id="birthdayMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        const targetDate = new Date('2026-06-27T20:00:00+02:00').getTime();
+        const TARGET_DATE = new Date('2026-06-27T20:00:00+02:00').getTime();
+        const MIDNIGHT_START = new Date('2026-06-27T00:00:00+02:00').getTime();
+        const MIDNIGHT_END   = new Date('2026-06-27T19:59:59+02:00').getTime();
+
+        let musicPlaying = false;
+        const audio = document.getElementById('birthdayMusic');
+
+        function showCountdownPage() {
+            document.getElementById('countdown-page').classList.remove('hidden');
+            document.getElementById('midnight-page').classList.add('hidden');
+            document.getElementById('birthday-page').classList.add('hidden');
+        }
+
+        function showMidnightPage() {
+            document.getElementById('countdown-page').classList.add('hidden');
+            document.getElementById('midnight-page').classList.remove('hidden');
+            document.getElementById('birthday-page').classList.add('hidden');
+        }
 
         function showBirthdayPage() {
             document.getElementById('countdown-page').classList.add('hidden');
+            document.getElementById('midnight-page').classList.add('hidden');
             document.getElementById('birthday-page').classList.remove('hidden');
         }
 
         function updateCountdown() {
-           const distance = targetDate - Date.now();
+            const distance = TARGET_DATE - Date.now();
 
-if ((distance <= 60000 && distance > 0) || debugFinal) {
-
-    document.body.classList.add("final-minute");
-
-    document.getElementById("final-message")
-            .classList.remove("hidden");
-
-} else {
-
-    document.body.classList.remove("final-minute");
-
-    document.getElementById("final-message")
-            .classList.add("hidden");
-
-}
+            if ((distance <= 60000 && distance > 0) || debugFinal) {
+                document.body.classList.add("final-minute");
+                document.getElementById("final-message").classList.remove("hidden");
+            } else {
+                document.body.classList.remove("final-minute");
+                document.getElementById("final-message").classList.add("hidden");
+            }
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -280,52 +257,96 @@ if ((distance <= 60000 && distance > 0) || debugFinal) {
             document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
         }
 
+        function updateMidnightCountdown() {
+            const distance = TARGET_DATE - Date.now();
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('mid-hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('mid-minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('mid-seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        function updatePageState() {
+            const now = Date.now();
+            const urlParams = new URLSearchParams(window.location.search);
+            const debug = urlParams.get("debug");
+
+            if (debug === "midnight") {
+                showMidnightPage();
+                return;
+            }
+            if (debug === "birthday" || urlParams.get("show") === "birthday") {
+                showBirthdayPage();
+                return;
+            }
+            if (debug === "final") {
+                document.body.classList.add("final-minute");
+            }
+
+            if (now < MIDNIGHT_START) {
+                showCountdownPage();
+            } else if (now >= MIDNIGHT_START && now <= MIDNIGHT_END) {
+                showMidnightPage();
+            } else {
+                showBirthdayPage();
+            }
+        }
+
+        function startMusic() {
+            if (!musicPlaying) {
+                audio.play().then(() => {
+                    musicPlaying = true;
+                    document.getElementById('music-btn').innerHTML = `🎵 Muzyka gra...`;
+                }).catch(() => {
+                    alert("Kliknij jeszcze raz – przeglądarka wymaga interakcji.");
+                });
+            }
+        }
+
         function openEnvelope() {
             document.getElementById('envelope-message').classList.toggle('hidden');
         }
 
         // Debug
-const urlParams = new URLSearchParams(window.location.search);
+        const urlParams = new URLSearchParams(window.location.search);
+        const debugMode = urlParams.get("debug");
+        const debugFinal = debugMode === "final";
 
-const debugMode = urlParams.get("debug");
-const debugFinal = debugMode === "final";
+        if (urlParams.get("debug") || urlParams.get("show")) {
+            document.getElementById('debug-btn').classList.remove('hidden');
+        }
 
-// Pokazanie strony z życzeniami
-if (urlParams.get("show") === "birthday" || debugMode === "birthday") {
-    showBirthdayPage();
-}
+        // Gwiazdy
         const stars = document.getElementById("stars");
+        for(let i = 0; i < 80; i++) {
+            const star = document.createElement("div");
+            star.className = "star";
+            star.style.left = Math.random() * 100 + "%";
+            star.style.top = Math.random() * 100 + "%";
+            star.style.animationDelay = Math.random() * 3 + "s";
+            stars.appendChild(star);
+        }
 
-for(let i = 0; i < 80; i++) {
+        setInterval(() => {
+            const star = document.createElement("div");
+            star.className = "shooting-star";
+            star.style.top = Math.random() * 40 + "%";
+            star.style.left = "100%";
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 2000);
+        }, 4000);
 
-    const star = document.createElement("div");
+        // Uruchomienie
+        setInterval(() => {
+            updateCountdown();
+            if (!document.getElementById('midnight-page').classList.contains('hidden')) {
+                updateMidnightCountdown();
+            }
+        }, 100);
 
-    star.className = "star";
-
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-    star.style.animationDelay = Math.random() * 3 + "s";
-
-    stars.appendChild(star);
-
-}
-
-setInterval(() => {
-
-    const star = document.createElement("div");
-
-    star.className = "shooting-star";
-
-    star.style.top = Math.random() * 40 + "%";
-    star.style.left = "100%";
-
-    document.body.appendChild(star);
-
-    setTimeout(() => star.remove(), 2000);
-
-}, 4000);
-
-        setInterval(updateCountdown, 100);
+        updatePageState();
         updateCountdown();
     </script>
 </body>
