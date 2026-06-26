@@ -132,7 +132,7 @@
         </div>
     </div>
 
-    <!-- MIDNIGHT PAGE (ETAP 2) -->
+    <!-- MIDNIGHT PAGE -->
     <div id="midnight-page" class="hidden min-h-screen flex items-center justify-center p-4">
         <div class="max-w-md w-full text-center">
             <div class="text-8xl mb-8">🎉</div>
@@ -167,6 +167,20 @@
                 <span class="text-2xl">▶</span>
                 Rozpocznij muzykę
             </button>
+
+            <!-- Kontrola głośności -->
+            <div id="volume-control" class="hidden mt-6 flex items-center gap-3 justify-center">
+                <span class="text-xl">🔊</span>
+                <input 
+                    type="range" 
+                    id="volume-slider"
+                    min="0" 
+                    max="100" 
+                    value="70"
+                    oninput="setVolume(this.value)"
+                    class="w-40 accent-amber-400 cursor-pointer">
+                <span class="text-sm text-zinc-400 w-8" id="volume-value">70%</span>
+            </div>
         </div>
     </div>
 
@@ -216,6 +230,7 @@
 
         let musicPlaying = false;
         const audio = document.getElementById('birthdayMusic');
+        audio.volume = 0.7; // domyślna głośność
 
         function showCountdownPage() {
             document.getElementById('countdown-page').classList.remove('hidden');
@@ -298,11 +313,19 @@
             if (!musicPlaying) {
                 audio.play().then(() => {
                     musicPlaying = true;
-                    document.getElementById('music-btn').innerHTML = `🎵 Muzyka gra...`;
+                    document.getElementById('music-btn').innerHTML = `
+                        <span class="text-2xl">⏸</span> Muzyka gra...
+                    `;
+                    document.getElementById('volume-control').classList.remove('hidden');
                 }).catch(() => {
-                    alert("Kliknij jeszcze raz – przeglądarka wymaga interakcji.");
+                    alert("Kliknij jeszcze raz – przeglądarka wymaga interakcji użytkownika.");
                 });
             }
+        }
+
+        function setVolume(value) {
+            audio.volume = value / 100;
+            document.getElementById('volume-value').textContent = value + "%";
         }
 
         function openEnvelope() {
@@ -318,7 +341,7 @@
             document.getElementById('debug-btn').classList.remove('hidden');
         }
 
-        // Gwiazdy
+        // Gwiazdy i spadające gwiazdy
         const stars = document.getElementById("stars");
         for(let i = 0; i < 80; i++) {
             const star = document.createElement("div");
@@ -338,7 +361,7 @@
             setTimeout(() => star.remove(), 2000);
         }, 4000);
 
-        // Uruchomienie
+        // Główna pętla
         setInterval(() => {
             updateCountdown();
             if (!document.getElementById('midnight-page').classList.contains('hidden')) {
